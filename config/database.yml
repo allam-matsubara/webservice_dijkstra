@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: "postgres"
+  password: ""
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: shipping_dev
+
+production:
+  <<: *default
+  database: shipping
+
+test:
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/test.sqlite3
