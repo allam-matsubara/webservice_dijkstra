@@ -19,13 +19,15 @@ class PathsController < ApplicationController
   # POST /paths
   # POST /paths.json
   def create
-    @path = Path.new(path_params)
+    path_params.each do |p|
+      @path = Path.new(p)
 
-    if @path.save
-      render json: @path, status: :created, location: @path
-    else
-      render json: @path.errors, status: :unprocessable_entity
+      unless @path.save
+        render json: @path.errors, status: :unprocessable_entity
+      end
     end
+    
+    head :created
   end
 
   # PATCH/PUT /paths/1
