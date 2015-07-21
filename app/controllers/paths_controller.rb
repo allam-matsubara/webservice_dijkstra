@@ -1,18 +1,21 @@
 class PathsController < ApplicationController
-  
+  before_action :decode_args, only: [:create, :find_shortest] 
 
   # This method expects a JSON which must contain two points, point_a and 
   # point_b, the distance between them and a map name to which those points 
   # belong .e.g;:
   #
   # '{
-  #   "path" : {
+  #   "path" : [{
   #     point_a: "A point",
   #     point_b: "B point",
   #     distance: number of km,
   #     name: "map_name",
-  #   }
+  #   }]
   # }'
+  #
+  # NOTE: ensure that you encapsulate the path value ofthe hash into an array.
+  # This is required to allow saving multiple points at once.
   # This must be sent to our server using POST HTTP verb.
   def create
     path_params["path"].each do |p|
@@ -36,19 +39,22 @@ class PathsController < ApplicationController
   #     origin: "A",
   #     destination: "B",
   #     autonomy: 20,
-  #     consumption: 8.5
+  #     fuel_cost: 2.9
   #   }
   # }'
   # This must be sent to our server using POST HTTP verb.
   def find_shortest
-    Path.shortest_path(path_params["find_shortest"])
+    @path = Path.shortest_path(path_params["find_shortest"])
+
+    if @path
+      render json: @path.to_json, status: :ok
+    else
+      render json: {}.to_json, status: :unprocessable_entity
+    end
+    
   end
 
   private
-
-    def set_path
-      @path = Path.find(params[:id])
-    end
 
     def path_params
       @json
