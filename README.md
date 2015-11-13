@@ -1,6 +1,4 @@
-## Processo seletivo S2
-
-Denvolvimento de webservice para avaliação de código. Esta aplicação usa 
+Desenvolvimento de webservice para avaliação de código. Esta aplicação usa 
 rails 4.2.3, ruby 2.1.5 e foi gerado a partir da gem rails-api. Para 
 persistência de dados foi utilizado um banco de dados postgresql. 
 
