@@ -5,11 +5,7 @@ persistência de dados foi utilizado um banco de dados postgresql.
 **Algumas considerações:**
 
 * Utilizar um banco como postgresql parece um pouco além do que o necessaŕio
-  para este problema, talvez um banco de dados NoSQL paderia ser utilizado
-  pois não existem realcionamentos de dados com chaves estrangeiras na 
-  solução do problema. Tal banco não foi utilizado pois não tenho 
-  conhecimento de NoSQL nem do ActiveRecord para tal banco. Além de fortes 
-  suspeitas de que esses bancos não são confiáveis.
+  para este problema, talvez um banco de dados NoSQL paderia ter sido utilizado.
 
 * O algortimo utilizado é o famoso algritmo de Dijkstra para solução de 
   caminhos ótimos em grafos direcionados ou não sem arestas negativas, como
@@ -19,7 +15,7 @@ persistência de dados foi utilizado um banco de dados postgresql.
   haja o mesmo caminha de volta. A solução prevê a existência de grafos 
   desconexos, e, caso, se selecione um vértice de origem e de destinos que 
   partençam a componentes conexas diferentes, o webservice irá retornar um 
-  ovjeto JSON vazio.
+  objeto JSON vazio.
 
 * Um dos maiores desafios desse exercício foi a criação de um webservice.
   Nunca havia sido solicitado para criar um webservice e, apesar de ter noção
@@ -33,13 +29,13 @@ persistência de dados foi utilizado um banco de dados postgresql.
 * Essa aplicação não contém um cliente para enviar requisições e receber
   respostas do servidor.
 
-* Como servidor de desnvolvimento foi usado passenger standalone.
+* Como servidor de desenvolvimento foi usado passenger standalone.
 
 * Essa aplicação ainda não possui testes.
 
 **Como utilizar:**
 
-1. Baixar a cplicação, via git ou http [daqui](https://github.com/allam-matsubara/s2_challenge).
+1. Baixar a cplicação, via git ou http [daqui](https://github.com/allam-matsubara/webservice_dijkstra).
 
 2. No diretório da aplicação rodar bundle install para download das gems 
   necessárias.
